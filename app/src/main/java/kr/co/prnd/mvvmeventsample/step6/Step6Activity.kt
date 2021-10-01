@@ -1,6 +1,7 @@
 package kr.co.prnd.mvvmeventsample.step6
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,13 +21,11 @@ class Step6Activity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         repeatOnStarted {
-            viewModel.eventFlow.collect { event -> handleEvent(event) }
+            viewModel.eventFlow.collect {
+                Log.d("gf", "$it")
+            }
         }
     }
 
-    private fun handleEvent(event: Event) = when (event) {
-        is Event.ShowToast -> Toast.makeText(this, event.text, Toast.LENGTH_SHORT).show()
-        is Event.Aaa -> Toast.makeText(this, "aaa event: ${event.value}", Toast.LENGTH_SHORT).show()
-        is Event.Bbb -> Toast.makeText(this, "bbb event: ${event.value}", Toast.LENGTH_SHORT).show()
-    }
+
 }

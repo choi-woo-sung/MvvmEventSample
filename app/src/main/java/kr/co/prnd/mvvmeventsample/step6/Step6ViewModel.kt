@@ -17,7 +17,7 @@ class Step6ViewModel @Inject constructor() : ViewModel() {
     }
 
     fun aaa() {
-        event(Event.Aaa("aaa"))
+        event(Event.Aaa(56))
     }
 
     fun bbb() {
@@ -32,7 +32,7 @@ class Step6ViewModel @Inject constructor() : ViewModel() {
 
     sealed class Event {
         data class ShowToast(val text: String) : Event()
-        data class Aaa(val value: String) : Event()
+        data class Aaa(val value: Int) : Event()
         data class Bbb(val value: Int) : Event()
     }
 }
